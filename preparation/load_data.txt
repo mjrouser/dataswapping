@@ -22,36 +22,13 @@ shp2pgsql -s 2805 -i -I -d -D /Users/djq/Dropbox/courbanize_data/boston-metro/ce
 # boston parcels
 shp2pgsql -s 2805 -i -I -d -D /Users/djq/Dropbox/courbanize_data/boston/parcels/parcels_2010.shp parcels | psql -U david -d analysis -h 66.228.36.34 -p 5432 
 
-# schema for tax
-create table tax_assessor (
-parcel_id_num numeric,
-parcel_id character varying(10),
-gross_area numeric,
-bldg_area numeric,
-av_land	numeric,
-num_floors numeric,
-fy2000	numeric,
-fy2001	numeric,
-fy2002	numeric,
-fy2003	numeric,
-fy2004	numeric,
-fy2005	numeric,
-fy2006	numeric,
-fy2007	numeric,
-fy2008	numeric,
-fy2009	numeric,
-fy2010	numeric,
-fy2011	numeric,
-fy2012	numeric,
-fy2013	numeric)
-
 # make postgres the owner
 sudo chown postgres TaxAssessorDatabase.csv
 sudo chmod 755 TaxAssessorDatabase.csv
 
 # load data
-drop table tax_assessor_tmp;
-create table tax_assessor_tmp (
+drop table tax_assessor;
+create table tax_assessor (
 parcel_id character varying(10),
 CM_ID character varying(10),
 OWNER character varying(100),
@@ -126,7 +103,19 @@ Blk_ID_10 numeric,
 BG_ID_10 numeric,
 CT_ID_10 numeric
 );
-COPY tax_assessor_tmp FROM '/home/david/dataswap/TaxAssessorDatabase.csv' WITH CSV HEADER DELIMITER AS ',';
+COPY tax_assessor FROM '/home/david/dataswap/TaxAssessorDatabase.csv' WITH CSV HEADER DELIMITER AS ',';
+
+SELECT AddGeometryColumn('public', 'tax_assessor', 'geom', 26986, 'POINT', 2);
+UPDATE tax_assessor set geom = ST_SetSRID(ST_MakePoint(x, y), 26986);
+CREATE INDEX idx_tax_assessor ON tax_assessor USING GIST ( geom );
+
+-- grant permissions
+GRANT ALL ON ALL TABLES IN SCHEMA public to dataswap;
+
+--make small sample to check ok
+drop table tax_test_temp;
+create table tax_test_temp as select * from tax_assessor limit 10;
+
 
 
 
