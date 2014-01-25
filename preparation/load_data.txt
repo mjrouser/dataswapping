@@ -1,0 +1,66 @@
+
+# load boston data
+
+# districts
+shp2pgsql -s 2805 -i -I -d -D /Users/djq/Dropbox/courbanize_data/boston/buildings/bra_planning_districts_prj.shp neighborhoods | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# districts - part 2 (previous data was not matching with some city maps)
+shp2pgsql -s 2805 -i -I -d -D /Users/djq/Dropbox/courbanize_data/boston/buildings/bra_planning_districts_2000_simplified_prj.shp neighborhoods | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# buildings
+shp2pgsql -s 2805 -i -I -d -W "LATIN1" -D /Users/djq/Dropbox/courbanize_data/boston/buildings/Buildings_prj.shp buildings | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# roads
+shp2pgsql -s 2805 -i -I -d -W "LATIN1" -D /Users/djq/Dropbox/courbanize_data/boston/buildings/Road_Centerlines_prj.shp roads | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# road polygons
+shp2pgsql -s 2805 -i -I -d -W "LATIN1" -D /Users/djq/Dropbox/courbanize_data/boston/buildings/Road_Polygons_prj.shp road_polygons | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# census blockgroups
+shp2pgsql -s 2805 -i -I -d -D /Users/djq/Dropbox/courbanize_data/boston-metro/census/2010_blockgroup_prj.shp census | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# boston parcels
+shp2pgsql -s 2805 -i -I -d -D /Users/djq/Dropbox/courbanize_data/boston/parcels/parcels_2010.shp parcels | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# schema for tax
+create table tax_assessor (
+parcel_id_num numeric,
+parcel_id character varying(10),
+gross_area numeric,
+bldg_area numeric,
+av_land	numeric,
+num_floors numeric,
+fy2000	numeric,
+fy2001	numeric,
+fy2002	numeric,
+fy2003	numeric,
+fy2004	numeric,
+fy2005	numeric,
+fy2006	numeric,
+fy2007	numeric,
+fy2008	numeric,
+fy2009	numeric,
+fy2010	numeric,
+fy2011	numeric,
+fy2012	numeric,
+fy2013	numeric)
+
+# make postgres the owner
+sudo chown postgres TaxAssessorDatabase_min.csv
+sudo chmod 755 TaxAssessorDatabase_min.csv
+
+# load data
+COPY tax_assessor
+FROM '/home/david/courbanize_data/boston/tax/TaxAssessorDatabase_min.csv'
+WITH DELIMITER ','
+CSV HEADER
+
+
+
+
+
+
+
+
+
+
