@@ -26,7 +26,10 @@ datcut[, 5] <- ifelse(datcut[, 5] == ".", "",
 										 			 					str_sub(datcut[, 5], 1, 2), 
 										  							sep = "")))
 
+# remove any null dates cos Postgres will complain
+datcut =subset(datcut, closedate != "")
 
+# write output, removing row numbers and setting NA to be ''
 write.csv(datcut, "CAD_Final_911Reports_forimport.csv", row.names=F, na = '')
 
 # CRM (311) data ####
