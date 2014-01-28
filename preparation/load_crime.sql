@@ -1,5 +1,5 @@
-# make/drop table
-# psql
+-- make/drop table
+-- run commands in psql or similar
 drop table nineoneone;
 create table nineoneone (
 	x numeric,
@@ -12,19 +12,12 @@ create table nineoneone (
 	violent integer
 );
 
-# copy data from CSV
+-- copy data from CSV
 \COPY nineoneone FROM '/Volumes/SaoirseMor/Dropbox/dataswap/BostonBlightBuilding/CAD_Final_911Reports_forimport.csv' WITH CSV HEADER DELIMITER AS ',';
 
-# create spatial col
-SELECT AddGeometryColumn('public', 'nineoneone', 'geom', 2894, 'POINT', 2); --2894 = ft; 26986 = m
-UPDATE nineoneone set geom = ST_SetSRID(ST_MakePoint(x, y), 2894);
+-- create spatial col
+-- is this feet or meter?
+-- --2894 = ft; 26986 = m
+SELECT AddGeometryColumn('public', 'nineoneone', 'geom', 26986, 'POINT', 2); 
+UPDATE nineoneone set geom = ST_Transform(ST_SetSRID(ST_MakePoint(x, y), 2894), 26986);
 CREATE INDEX idx_nineoneone ON nineoneone USING GIST ( geom );
-
--- grant permissions to all users 
-GRANT ALL ON ALL TABLES IN SCHEMA public to dataswap;
-
---make small sample to check ok and overlay on map
-drop table nineoneone_temp;
-create table nineoneone_temp as 
-select x, y, ST_Transform(geom, 26986) 
-from nineoneone limit 10;
