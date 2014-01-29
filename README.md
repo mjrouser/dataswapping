@@ -1,7 +1,6 @@
 dataswap_tax
 ============
-
-code to analyze of Boston's tax assessor data
+code to analyze Boston's tax assessor data
 
 
 connect to database
@@ -34,8 +33,10 @@ Info
 -------------------
 
 Everything is projected in 
-Mass State Plane - M
+Mass State Plane - meters
 SRID = 26986
+
+
 
 
 

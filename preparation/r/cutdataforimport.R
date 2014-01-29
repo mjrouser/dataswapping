@@ -54,7 +54,7 @@ datcut <- dat[, c(7:8, 38, 14, 20, 22:23, 35)]
 datcut[, 4] <- as.Date(as.character(datcut[, 4]), "%m/%d/%Y") # reformat date
 datcut[, 7] <- as.character(datcut[, 7])
 
-write.csv(datcut, "Fires_Final_forimport.csv")
+write.csv(datcut, "Fires_Final_forimport.csv", row.names=F, na = '')
 
 # permits data ####
 dat <- read.csv("Hansen Permits_2009_2012.csv")

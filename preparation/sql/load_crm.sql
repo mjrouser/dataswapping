@@ -20,3 +20,6 @@ create table crm_data (
 	problem integer, 
 	publicdenig integer
 );
+
+-- copy data from CSV
+\COPY crm_data FROM '/Volumes/SaoirseMor/Dropbox/dataswap/BostonBlightBuilding/CRM_Final_forimport.csv' WITH CSV HEADER DELIMITER AS ',';
