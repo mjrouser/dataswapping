@@ -1,11 +1,11 @@
 ﻿-- JOIN TAX POINTS TO BLOCKGROUPS
 DROP TABLE tax_blockgroups;
-CREATE TABLE tax_blockgroups AS 
+CREATE TABLE joined.tax AS 
 SELECT t.*, c.geoid10
-FROM tax_assessor as t
-JOIN census as c
+FROM original.tax as t
+JOIN original.census_2010 as c
 ON ST_Contains(c.geom, t.geom);
-CREATE INDEX idx_tax_blockgroups ON tax_blockgroups USING gist (geom);
+CREATE INDEX idx_tax ON joined.tax USING gist (geom);
 
 -- JOIN PARCELS AND TAX DATA
 DROP TABLE parcels_tax;

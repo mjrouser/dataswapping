@@ -1,5 +1,5 @@
-drop table acs_data;
-create table acs_data (
+drop table original.acs_data;
+create table original.acs_data (
 	bg_id numeric, 
 	popu numeric, 
 	popden numeric, 
@@ -32,4 +32,4 @@ create table acs_data (
 );
 
 -- copy data from CSV
-\COPY acs_data FROM '/Volumes/SaoirseMor/Dropbox/dataswap/ACS_2008_2012/acs0812_bg_suffolk_clean.csv' WITH CSV HEADER DELIMITER AS ',';
+\COPY original.acs_data FROM '/Volumes/SaoirseMor/Dropbox/dataswap/ACS_2008_2012/acs0812_bg_suffolk_clean.csv' WITH CSV HEADER DELIMITER AS ',';

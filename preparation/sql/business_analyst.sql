@@ -1,8 +1,8 @@
-This file is generated dynamically!
+--This file is generated dynamically!
 ------------------------------------------
 -- START 2007 2007 2007 2007
-drop original.table biz_data_2007;
-create original.table biz_data_2007 (
+drop table original.biz_data_2007;
+create table original.biz_data_2007 (
 	sic character varying(10),
 	naics_ext character varying(10),
 	sales_vol numeric,
@@ -26,8 +26,8 @@ CREATE INDEX idx_biz_data_2007 ON original.biz_data_2007 USING GIST ( geom );
 
 ------------------------------------------
 -- START 2008 2008 2008 2008
-drop original.table biz_data_2008;
-create original.table biz_data_2008 (
+drop table original.biz_data_2008;
+create table original.biz_data_2008 (
 	sic character varying(10),
 	naics_ext character varying(10),
 	sales_vol numeric,
@@ -51,8 +51,8 @@ CREATE INDEX idx_biz_data_2008 ON original.biz_data_2008 USING GIST ( geom );
 
 ------------------------------------------
 -- START 2009 2009 2009 2009
-drop original.table biz_data_2009;
-create original.table biz_data_2009 (
+drop table original.biz_data_2009;
+create table original.biz_data_2009 (
 	sic character varying(10),
 	naics_ext character varying(10),
 	sales_vol numeric,
@@ -76,8 +76,8 @@ CREATE INDEX idx_biz_data_2009 ON original.biz_data_2009 USING GIST ( geom );
 
 ------------------------------------------
 -- START 2010 2010 2010 2010
-drop original.table biz_data_2010;
-create original.table biz_data_2010 (
+drop table original.biz_data_2010;
+create table original.biz_data_2010 (
 	sic character varying(10),
 	naics_ext character varying(10),
 	sales_vol numeric,
@@ -101,8 +101,8 @@ CREATE INDEX idx_biz_data_2010 ON original.biz_data_2010 USING GIST ( geom );
 
 ------------------------------------------
 -- START 2011 2011 2011 2011
-drop original.table biz_data_2011;
-create original.table biz_data_2011 (
+drop table original.biz_data_2011;
+create table original.biz_data_2011 (
 	sic character varying(10),
 	naics_ext character varying(10),
 	sales_vol numeric,

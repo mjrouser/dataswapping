@@ -1,5 +1,5 @@
-drop table crm_data;
-create table crm_data (
+drop table original.crm;
+create table original.crm (
 	x  numeric,
 	y numeric, 
 	x_alt numeric, 
@@ -22,4 +22,9 @@ create table crm_data (
 );
 
 -- copy data from CSV
-\COPY crm_data FROM '/Volumes/SaoirseMor/Dropbox/dataswap/BostonBlightBuilding/CRM_Final_forimport.csv' WITH CSV HEADER DELIMITER AS ',';
+\COPY original.crm FROM '/Volumes/SaoirseMor/Dropbox/dataswap/BostonBlightBuilding/CRM_Final_forimport.csv' WITH CSV HEADER DELIMITER AS ',';
+
+
+ALTER TABLE original.crm ADD COLUMN geom geometry(POINT, 26986);
+UPDATE original.crm SET geom = ST_SetSRID(ST_MakePoint(x,y),26986);
+CREATE INDEX idx_crm ON original.crm USING GIST ( geom );

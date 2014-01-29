@@ -5,8 +5,8 @@ import pystache
 sql_template = '''
 ------------------------------------------
 -- START {{year}} {{year}} {{year}} {{year}}
-drop original.table biz_data_{{year}};
-create original.table biz_data_{{year}} (
+drop table original.biz_data_{{year}};
+create table original.biz_data_{{year}} (
 	sic character varying(10),
 	naics_ext character varying(10),
 	sales_vol numeric,
@@ -36,7 +36,7 @@ def generate_sql_code():
 	"""
 	# open file
 	sql = open('/Users/djq/repos/dataswap_tax/preparation/sql/business_analyst.sql', "wb")
-	sql.write('This file is generated dynamically!')
+	sql.write('--This file is generated dynamically!')
 		
 	# loop through years
 	for year in range(2007, 2012):	
