@@ -1,0 +1,40 @@
+-- JOIN TAX POINTS TO BLOCKGROUPS
+DROP TABLE joined.tax;
+CREATE TABLE joined.tax AS 
+SELECT t.*, c.geoid10
+FROM original.tax as t
+JOIN original.census_2010 as c
+ON ST_Contains(c.geom, t.geom);
+CREATE INDEX idx_tax ON joined.tax USING gist (geom);
+
+-- JOIN FIRES TO BLOCKGROUPS
+DROP TABLE joined.fires;
+CREATE TABLE joined.fires AS 
+SELECT f.*, c.geoid10
+FROM original.fires as f
+JOIN original.census_2010 as c
+ON ST_Contains(c.geom, f.geom);
+
+-- JOIN CRIME_311 TO BLOCKGROUPS
+DROP TABLE joined.crime_311;
+CREATE TABLE joined.crime_311 AS 
+SELECT f.*, c.geoid10
+FROM original.crime_311 as f
+JOIN original.census_2010 as c
+ON ST_Contains(c.geom, f.geom);
+
+-- JOIN PERMITS TO BLOCKGROUPS
+DROP TABLE joined.permits;
+CREATE TABLE joined.permits AS 
+SELECT p.*, c.geoid10
+FROM original.permits as p
+JOIN original.census_2010 as c
+ON ST_Contains(c.geom, p.geom);
+
+-- JOIN VIOLATIONS TO BLOCKGROUPS
+DROP TABLE joined.inspection_violations;
+CREATE TABLE joined.inspection_violations AS 
+SELECT p.*, c.geoid10
+FROM original.inspection_violations as p
+JOIN original.census_2010 as c
+ON ST_Contains(c.geom, p.geom);

@@ -1,5 +1,5 @@
-drop table original.crm;
-create table original.crm (
+drop table original.crime_311;
+create table original.crime_311 (
 	x  numeric,
 	y numeric, 
 	x_alt numeric, 
@@ -22,9 +22,9 @@ create table original.crm (
 );
 
 -- copy data from CSV
-\COPY original.crm FROM '/Volumes/SaoirseMor/Dropbox/dataswap/BostonBlightBuilding/CRM_Final_forimport.csv' WITH CSV HEADER DELIMITER AS ',';
+\COPY original.crime_311 FROM '/Volumes/SaoirseMor/Dropbox/dataswap/BostonBlightBuilding/CRM_Final_forimport.csv' WITH CSV HEADER DELIMITER AS ',';
 
 
-ALTER TABLE original.crm ADD COLUMN geom geometry(POINT, 26986);
-UPDATE original.crm SET geom = ST_SetSRID(ST_MakePoint(x,y),26986);
-CREATE INDEX idx_crm ON original.crm USING GIST ( geom );
+ALTER TABLE original.crime_311 ADD COLUMN geom geometry(POINT, 26986);
+UPDATE original.crime_311 SET geom = ST_Transform(ST_SetSRID(ST_MakePoint(x, y), 2894), 26986);
+CREATE INDEX idx_crime_311 ON original.crime_311 USING GIST ( geom );
