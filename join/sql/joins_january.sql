@@ -38,3 +38,12 @@ SELECT p.*, c.geoid10
 FROM original.inspection_violations as p
 JOIN original.census_2010 as c
 ON ST_Contains(c.geom, p.geom);
+
+-- JOIN BUILDINGS AND TAX DATA
+DROP TABLE joined.buildings;
+CREATE TABLE joined.buildings AS 
+SELECT b.*, c.geoid10
+FROM original.buildings as b 
+JOIN original.census_2010 as c
+ON ST_Contains(c.geom, ST_Transform(b.geom, 26986));
+CREATE INDEX idx_buildings ON joined.buildings USING gist (geom);
