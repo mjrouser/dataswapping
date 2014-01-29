@@ -2,6 +2,9 @@
 
 setwd("C:/Users/Jackie/Dropbox/Dataswap/Tax Assessor's Database and Auxiliary Data/BostonBlightBuilding")
 
+# david's path
+setwd("/Volumes/SaoirseMor/Dropbox/dataswap/BostonBlightBuilding/")
+
 # 911 reports ####
 dat <- read.csv("CAD Final (911 Reports).csv")
 datcut <- dat[, c(9, 10, 13, 14, 15, 17, 18, 19)]
@@ -24,7 +27,7 @@ datcut[, 5] <- ifelse(datcut[, 5] == ".", "",
 										  							sep = "")))
 
 
-write.csv(datcut, "CAD_Final_911Reports_forimport.csv")
+write.csv(datcut, "CAD_Final_911Reports_forimport.csv", row.names=F, na = '')
 
 # CRM (311) data ####
 rm(list=ls())
@@ -40,7 +43,7 @@ datcut[, 9] <- as.character(datcut[, 9])
 datcut[, 10] <- as.character(datcut[, 10])
 datcut[, 11] <- as.character(datcut[, 11])
 
-write.csv(datcut, "CRM_Final_forimport.csv")
+write.csv(datcut, "CRM_Final_forimport.csv", row.names=F, na = '')
 
 # fires data ####
 rm(list=ls())
