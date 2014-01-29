@@ -16,3 +16,4 @@ create table fires_data (
 -- add points
 ALTER TABLE fires_data ADD COLUMN geom geometry(POINT, 26986);
 UPDATE fires_data SET geom = ST_SetSRID(ST_MakePoint(x,y),26986);
+CREATE INDEX idx_fires_data ON fires_data USING GIST ( geom );
