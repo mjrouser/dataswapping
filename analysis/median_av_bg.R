@@ -39,7 +39,7 @@ for(yr in 2000:2013){
 dbDisconnect(con) # Close the connection
 
 #Combine years
-
+#Woot
 for(type in c('R1','R23','CD')){
 	mv = get(paste('mv2000',type,sep = ''))
 
