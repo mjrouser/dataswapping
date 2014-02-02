@@ -6,7 +6,7 @@ library(RPostgreSQL)
 library(gdata)
 
 #Path 
-setwd('/Users/Eyota/Dropbox/dataswap/')
+setwd('F:/Data/')
 
 # Connect to database
 drv <- dbDriver("PostgreSQL")
@@ -47,5 +47,11 @@ for(type in c('R1','R23','CD')){
 		toadd = get(paste('mv',yr,type,sep = ''))
 		mv = merge(mv, toadd, by = "GEOID10", all = T)
 	}
-	write.csv(mv, paste('Median Values BG/median_values_bg_',type,'.csv', sep = ''), row.names = F)
+	write.csv(mv, paste('median_values_bg_',type,'.csv', sep = ''), row.names = F)
 }
+
+# write dataframe to Postgres
+drv <- dbDriver("PostgreSQL")
+con <- dbConnect(drv, host="66.228.36.34",user='dataswap',password = 'taxtaxtax',dbname="dataswap", port="5432")
+dbSendQuery(con, 'update table aggregated.R1_tax set'= mv)
+dbDisconnect(con)
