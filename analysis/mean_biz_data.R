@@ -12,15 +12,18 @@ setwd('/home/tom/R')
 drv <- dbDriver("PostgreSQL")
 con <- dbConnect(drv, host="66.228.36.34",user='dataswap',password = 'taxtaxtax',dbname="dataswap", port="5432")
 
-#Get geoid10, sales_vol, number_emp by year
+#Get variables by year
 for(yr in 2007:2011){
-    query = dbSendQuery(con, paste("select geoid10, sales_vol, number_emp from joined.biz_data_",yr, sep=""))
+    query = dbSendQuery(con, paste("select sic, geoid10, sales_vol, number_emp from joined.biz_data_",yr, sep=""))
     df = fetch(query, n = -1); dbClearResult(query)
     
     #Aggregate and save dataframe
     meanval = aggregate(df [c("sales_vol","number_emp")], by = list(df$geoid10), FUN = mean)
     meanval = rename.vars(meanval, from = c("Group.1", "sales_vol","number_emp"), to = c('GEOID10',paste('sales_vol_',yr,sep=''),paste('number_emp_',yr,sep='')))
-    assign(paste("biz",yr,sep = ""),meanval)
+    countval = aggregate(df ["sic"], by = list(df$geoid10), FUN = length)
+    countval = rename.vars(countval, from = c('Group.1','sic'), to = c('GEOID10', paste('sic_',yr,sep='')))
+    merged = merge(meanval, countval, by = "GEOID10")
+    assign(paste("biz",yr,sep = ""),merged)
  }
 
 dbDisconnect(con) # Close the connection
@@ -39,6 +42,7 @@ write.csv(mv, "mean_values_biz.csv", row.names = F)
 #Write dataframe to Postgres
 drv <- dbDriver("PostgreSQL")
 con <- dbConnect(drv, host="66.228.36.34",user='dataswap',password = 'taxtaxtax',dbname="dataswap", port="5432")
-dbWriteTable(con, c("aggregated","biz_data"), value=mv)
+    dbRemoveTable(con, c("aggregated","biz_data"))
+    dbWriteTable(con, c("aggregated","biz_data"), value=mv)
 dbDisconnect(con)
 
