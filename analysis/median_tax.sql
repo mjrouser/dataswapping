@@ -49,9 +49,9 @@ av_2013 numeric
 --load data for R23
 \copy aggregated.R23_tax from '/home/tom/R/median_values_bg_R23.csv' with csv header delimiter as ',';
 
---Create table for RCD
-drop table aggregated.RCD_tax;
-create table aggregated.RCD_tax(
+--Create table for CD
+drop table aggregated.CD_tax;
+create table aggregated.CD_tax(
 
 GEOID10 character(12),
 av_2000 numeric, 
@@ -70,6 +70,6 @@ av_2012 numeric,
 av_2013 numeric 
 );
 
---load data for RCD
-\copy aggregated.RCD_tax from '/home/tom/R/median_values_bg_RCD.csv' with csv header delimiter as ',';
+--load data for CD
+\copy aggregated.CD_tax from '/home/tom/R/median_values_bg_CD.csv' with csv header delimiter as ',';
 EOF
