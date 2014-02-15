@@ -1,4 +1,4 @@
-#Program to count inspection violations data by block group and year
+#Program to count inspection violations data by block group and year (reshape needed)
 #Output to CSV for joining with 'MetroBostonBG.shp' shapefile and inputing into PostgreSQL
 
 # Libraries
