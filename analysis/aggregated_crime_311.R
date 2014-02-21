@@ -19,7 +19,7 @@ df$year <- substr(df[,2], 1,4) #creating a 'year' variable for aggregation
 
 #Aggregate and save dataframe
 countval = aggregate(df$type, by = list(df$geoid10, df$year), FUN = length)
-countval = rename.vars(countval, from = c('Group.1','Group.2','x'), to = c('GEOID10','year','311call_count'))
+countval = rename.vars(countval, from = c('Group.1','Group.2','x'), to = c('GEOID10','year','crime_311_count'))
 
 attach(countval)
 countval_sorted <-countval[order(GEOID10,year),]
