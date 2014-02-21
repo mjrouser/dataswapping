@@ -16,18 +16,22 @@ con <- dbConnect(drv, host="66.228.36.34",user='dataswap',password = 'taxtaxtax'
 query = dbSendQuery(con, paste("select geoid10, adddate, permittype from joined.permits"))
 df = fetch(query, n = -1); dbClearResult(query)
 df$year <- substr(df[,2], 1,4) #creating a 'year' variable for aggregation
-  
+
 #Aggregate and save dataframe
 countval = aggregate(df, by = list(df$geoid10, df$year), FUN = length)
 countval$geoid10 <- countval$adddate <- countval$year <- NULL
 countval = rename.vars(countval, from = c('Group.1','Group.2','permittype'), to = c('GEOID10','year','permit_count'))
-countwide = reshape(countval, idvar="GEOID10", timevar = "year", direction = "wide")
+
+attach(countval)
+countval_sorted <-countval[order(GEOID10,year),]
+detach(countval)
+row.names(countval_sorted) <- NULL
 
 #Save data as .csv
-write.csv(countwide, "permits_count.csv", row.names = F)
+write.csv(countval_sorted, "permits_count.csv", row.names = F)
 
 #Write dataframe to Postgres
     dbRemoveTable(con, c("aggregated","permits"))
-    dbWriteTable(con, c("aggregated","permits"), value=countwide)
+    dbWriteTable(con, c("aggregated","permits"), value=countval_sorted)
 dbDisconnect(con)
 
