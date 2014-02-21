@@ -21,13 +21,17 @@ df$year <- substr(df[,2], 1,4) #creating a 'year' variable for aggregation
 countval = aggregate(df, by = list(df$geoid10, df$year), FUN = length)
 countval$geoid10 <- countval$description <- countval$year <- NULL
 countval = rename.vars(countval, from = c('Group.1','Group.2','violationdate'), to = c('GEOID10','year','violation_count'))
-countwide = reshape(countval, idvar="GEOID10", timevar = "year", direction = "wide")
+
+attach(countval)
+countval_sorted <-countval[order(GEOID10,year),]
+detach(countval)
+row.names(countval_sorted) <- NULL
 
 #Save data as .csv
-write.csv(countwide, "inspections_count.csv", row.names = F)
+write.csv(countval_sorted, "inspections_count.csv", row.names = F)
 
 #Write dataframe to Postgres
     dbRemoveTable(con, c("aggregated","violation_inspections"))
-    dbWriteTable(con, c("aggregated","violation_inspections"), value=countwide)
+    dbWriteTable(con, c("aggregated","violation_inspections"), value=countval_sorted)
 dbDisconnect(con)
 
