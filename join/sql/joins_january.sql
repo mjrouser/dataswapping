@@ -47,3 +47,11 @@ FROM original.buildings as b
 JOIN original.census_2010 as c
 ON ST_Contains(c.geom, ST_Transform(b.geom, 26986));
 CREATE INDEX idx_buildings ON joined.buildings USING gist (geom);
+
+-- JOIN CRIME_911 TO BLOCKGROUPS
+DROP TABLE joined.crime_911;
+CREATE TABLE joined.crime_911 AS 
+SELECT f.*, c.geoid10
+FROM original.crime_911 as f
+JOIN original.census_2010 as c
+ON ST_Contains(c.geom, f.geom);
