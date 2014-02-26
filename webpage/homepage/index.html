@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>DataSwapping</title>
 
 <!--
@@ -7,16 +12,41 @@
 -->
 
 
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css" media="all">
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css" media="screen">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Need to find the right link for this file
+<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+-->
+
 
 <!--
 <link rel="stylesheet" type="text/css" href="custom.css">
 -->
 
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">What is TAXonomy?</h4>
+      </div>
+      <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.&hellip;</p>
+      </div>
+      <div class="modal-footer">
+      </div><!--/.modal footer-->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
 <style type='text/css'>
 body {
 background-color: #FFFFFF;
+
 }
 </style>
 </head>
@@ -35,9 +65,13 @@ background-color: #FFFFFF;
   </ul>
 </div>
 -->
+<div class="page-header">
+  <h2 style="text-align: center;">TAXonomy</h2>
+</div>
 
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
+<div class="container-fluid">
+  <nav class="navbar navbar-default" role="navigation">
+  
     <!--Brand and Toggle get grouped for better mobile display-->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -49,13 +83,17 @@ background-color: #FFFFFF;
       <a class="navbar-brand" href="#">Brand</a>
     </div>  
   
-  
+  <!--Collect the nav links and content for toggling-->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
      <ul class="nav navbar-nav">
       <li class"active"><a href="index.html">Home</a></li>
       <li><a href="maps_data.html">Maps/Data</a></li>
+      <li><a href="tellyourstory.html">Tell Your Story</a></li>
+     </ul>
+     <ul class="nav navbar-nav navbar-right">
+      <li><a data-toggle="modal" href="#myModal">About</a></li>   
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Be Social<b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span><b class="caret"></b></a>
 
         <ul class="dropdown-menu">
           <li><a href="#">Twitter</a></li>
@@ -65,10 +103,8 @@ background-color: #FFFFFF;
       </li>
      </ul>
     </div><!--/.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-
-</nav>
-
+  </nav>
+</div><!-- /.container-fluid -->
 
 <!--
   <div class="container">
@@ -95,7 +131,7 @@ background-color: #FFFFFF;
     </div>
   -->
 
-
+  <div class="container-fluid">
     <div id='content' class='row-fluid' style="text-align: center;">
       <div class='span12 main'>
         <h2></h2>
