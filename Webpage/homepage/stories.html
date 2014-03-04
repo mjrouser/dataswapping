@@ -27,26 +27,9 @@ background-color: #FFFFFF;
 
 
 
-<!-- Facebook share button script-->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=262994210406910";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-<!--Twitter share button script -->
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 
 
-
-
-
-<div class="fb-share-button" data-href="http://dataswap2013.com" data-type="button_count"></div>
 
 <div class="page-header">
   
@@ -71,8 +54,8 @@ background-color: #FFFFFF;
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
      <ul class="nav navbar-nav">
       <li><a href="index.html">Home</a></li>
-      <li class="active"><a href="maps_data.html">Maps/Data</a></li>
-      <li><a href="stories.html">Tell Your Story</a></li>
+      <li><a href="maps_data.html">Maps/Data</a></li>
+      <li class="active"><a href="stories.html">Tell Your Story</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
       <li><a data-toggle="modal" href="#myModal">About</a></li>   
@@ -81,7 +64,9 @@ background-color: #FFFFFF;
 
         <ul class="dropdown-menu">
           <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://dataswap2013.com/" data-text="See what data says about your neighborhood" data-lang="en">Tweet</a></li>
-          <li><button class="btn btn-mini btn-facebook"><i class="fa fa-facebook"></i> | Share on Facebook</button></li>
+          <li> <div class="fb-share-button" data-href="http://dataswap2013.com" data-type="button_count"></div>
+            <!--<button class="btn btn-mini btn-facebook"><i class="fa fa-facebook"></i> | Share on Facebook</button> -->
+            </li>
           <li><a href="#">Something Else</a></li>
         </ul>
       </li>
@@ -145,6 +130,24 @@ background-color: #FFFFFF;
 <!-- External links for the Jquery and Js needed for Bootstrap -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<!--Twitter share button script -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+
+<!-- Facebook share button script-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=262994210406910";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
 
 </body>
 </html>
