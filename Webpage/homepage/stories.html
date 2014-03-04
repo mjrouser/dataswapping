@@ -8,49 +8,48 @@
 <title>TAXonomy</title>
 
 
-
-
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="social-buttons-3.css">
-
-
-
- <!--
-<link rel="stylesheet" type="text/css" href="custom.css">
--->
-
-
-
-
 
 <style type='text/css'>
 body {
 background-color: #FFFFFF;
-
 }
 </style>
+
+
+
 </head>
 <body>
 
 
 
+<!-- Facebook share button script-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=262994210406910";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-<!--  These are nav tabs, not sure if better to use these or a bar
-<div class="container-fluid" style="padding-top: 20px;">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="index.hml">Home</a></li>
-    <li><a href="maps_data.html">Maps/Data</a></li>
-    <li><a href="#">Tell Your Story</a></li>
-  </ul>
-</div>
--->
+
+<!--Twitter share button script -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 
+
+
+
+
+<div class="fb-share-button" data-href="http://dataswap2013.com" data-type="button_count"></div>
 
 <div class="page-header">
+  
   <h2 style="text-align: center;">TAXonomy</h2>
 </div>
 
@@ -59,7 +58,7 @@ background-color: #FFFFFF;
   
     <!--Brand and Toggle get grouped for better mobile display-->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tax-navbar-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -69,10 +68,10 @@ background-color: #FFFFFF;
     </div>  
   
   <!--Collect the nav links and content for toggling-->
-    <div class="collapse navbar-collapse" id="tax-navbar-collapse">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
      <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">Home</a></li>
-      <li><a href="maps_data.html">Maps/Data</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li class="active"><a href="maps_data.html">Maps/Data</a></li>
       <li><a href="stories.html">Tell Your Story</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
@@ -81,8 +80,8 @@ background-color: #FFFFFF;
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span><b class="caret"></b></a>
 
         <ul class="dropdown-menu">
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">FB</a></li>
+          <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://dataswap2013.com/" data-text="See what data says about your neighborhood" data-lang="en">Tweet</a></li>
+          <li><button class="btn btn-mini btn-facebook"><i class="fa fa-facebook"></i> | Share on Facebook</button></li>
           <li><a href="#">Something Else</a></li>
         </ul>
       </li>
@@ -93,19 +92,38 @@ background-color: #FFFFFF;
 
 
 
-  <div class="container-fluid">
-    <div id='content' class='row-fluid' style="text-align: center;">
-      <div class="">
+
+
+<div id='content' class='container-fluid'>
+      <div class='col-md-3'> <!-- viz cols -->
         <h2></h2>
 
+        <ul class="nav nav-tabs nav-justified">
+          <li><a href="#">Map 1</a></li>
+          <li><a href="#">Map 2</a></li>
+          <li><a href="#">Map 3</a></li>
+        </ul>
+        <br>
 
-        <img src="" alt="viz placeholder" style= "height: 400px; width: 600px;">
 
-       
-      </div>  
-    </div>
-  </div>
+        <img src="" alt="viz placeholder" style= "height: 150px; width: 150px;">
 
+        <br>
+
+        <p style="padding-top: 20px;">Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+
+
+      </div> <!-- /viz cols -->
+      <div class='col-md-9'> <!-- story cols -->
+        <h3>Your Stories</h3>
+           <ul class="nav nav-tabs nav-stacked">
+           <li><a href='#'>Story 1</a></li>
+           <li><a href='#'>Story 2</a></li>
+           <li><a href='#'>Story 3</a></li>
+           </ul>
+      </div>  <!-- /story cols -->
+</div>
+  
 
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
@@ -117,13 +135,14 @@ background-color: #FFFFFF;
       <div class="modal-body">
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.&hellip;</p>
       </div>
-      <div class="modal-footer">
-      </div><!--/.modal footer-->
+       <div class="modal-footer">
+       </div><!--/.modal footer-->
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div><!-- /.modal -->  
 
-<!-- JQuery and JS for bootstrap -->
+
+<!-- External links for the Jquery and Js needed for Bootstrap -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
