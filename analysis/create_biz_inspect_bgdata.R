@@ -307,3 +307,159 @@ newdata <- merge(newdata, count_inspectmaintain_var, by = c("geoid10", "year"))
 
 setwd("C:/Users/Jackie/Dropbox/Civic Tech/Dataswap/dataswap/Tax Assessor's Database and Auxiliary Data/output/data")
 write.csv(newdata, file = "inspect_bg_vars.csv", row.names = F, na = '')
+
+
+# crime data ####
+setwd("C:/Users/Jackie/Dropbox/Civic Tech/Dataswap/dataswap/Tax Assessor's Database and Auxiliary Data/output/data")
+crimedata1 <- read.csv("crime_1.csv")
+crimedata2 <- read.csv("crime_2.csv")
+# geoids file duplicated each observation, 
+# so counts are divided by 2
+
+# merge crime data ####
+crimedata <- as.data.frame(rbind(crimedata1, crimedata2))
+years <- unique(crimedata$fromdate)
+
+# crime counts ####
+count_crime <- list()
+for (i in 1:length(years)) {
+	dat <- crimedata[crimedata$fromdate %in% years[i], ]
+	count_crime[[i]] <- do.call(rbind, 
+															as.list(by(dat$fromdate, 
+																				 dat$geoid10, 
+																				 length)))
+	count_crime[[i]] <- cbind(as.numeric(row.names(count_crime[[i]])), 
+														count_crime[[i]]/2, 
+														as.numeric(rep(years[i],
+																			 		length(count_crime[[i]]))))
+}
+names(count_crime) <- years
+
+count_crime_var <- as.data.frame(rbind(count_crime[[1]], 
+												 count_crime[[2]], 
+												 count_crime[[3]], 
+											   count_crime[[4]]))
+colnames(count_crime_var) <- c("geoid10", "count_crime", "year")
+
+# total robberies ####
+count_robbery <- list()
+for (i in 1:length(years)) {
+	dat <- crimedata[crimedata$fromdate %in% years[i] &
+									 	crimedata$robbery == 1, ]
+	count_robbery[[i]] <- do.call(rbind, 
+															as.list(by(dat$fromdate, 
+																				 dat$geoid10, 
+																				 length)))
+	count_robbery[[i]] <- cbind(as.numeric(row.names(count_robbery[[i]])), 
+														count_robbery[[i]]/2, 
+														as.numeric(rep(years[i],
+																			 		length(count_robbery[[i]]))))
+}
+names(count_robbery) <- years
+
+count_robbery_var <- as.data.frame(rbind(count_robbery[[1]], 
+												 count_robbery[[2]], 
+												 count_robbery[[3]], 
+											   count_robbery[[4]]))
+colnames(count_robbery_var) <- c("geoid10", "count_robbery", "year")
+
+# total burglaries ####
+count_burglary <- list()
+for (i in 1:length(years)) {
+	dat <- crimedata[crimedata$fromdate %in% years[i] &
+									 	crimedata$burglary == 1, ]
+	count_burglary[[i]] <- do.call(rbind, 
+															as.list(by(dat$fromdate, 
+																				 dat$geoid10, 
+																				 length)))
+	count_burglary[[i]] <- cbind(as.numeric(row.names(count_burglary[[i]])), 
+														count_burglary[[i]]/2, 
+														as.numeric(rep(years[i],
+																			 		length(count_burglary[[i]]))))
+}
+names(count_burglary) <- years
+
+count_burglary_var <- as.data.frame(rbind(count_burglary[[1]], 
+												 count_burglary[[2]], 
+												 count_burglary[[3]], 
+											   count_burglary[[4]]))
+colnames(count_burglary_var) <- c("geoid10", "count_burglary", "year")
+
+# total domestic crimes ####
+count_domestic <- list()
+for (i in 1:length(years)) {
+	dat <- crimedata[crimedata$fromdate %in% years[i] &
+									 	crimedata$domestic == 1, ]
+	count_domestic[[i]] <- do.call(rbind, 
+															as.list(by(dat$fromdate, 
+																				 dat$geoid10, 
+																				 length)))
+	count_domestic[[i]] <- cbind(as.numeric(row.names(count_domestic[[i]])), 
+														count_domestic[[i]]/2, 
+														as.numeric(rep(years[i],
+																			 		length(count_domestic[[i]]))))
+}
+names(count_domestic) <- years
+
+count_domestic_var <- as.data.frame(rbind(count_domestic[[1]], 
+												 count_domestic[[2]], 
+												 count_domestic[[3]], 
+											   count_domestic[[4]]))
+colnames(count_domestic_var) <- c("geoid10", "count_domestic", "year")
+
+# total weapon crimes ####
+count_weapon <- list()
+for (i in 1:length(years)) {
+	dat <- crimedata[crimedata$fromdate %in% years[i] &
+									 	crimedata$weapon == 1, ]
+	count_weapon[[i]] <- do.call(rbind, 
+															as.list(by(dat$fromdate, 
+																				 dat$geoid10, 
+																				 length)))
+	count_weapon[[i]] <- cbind(as.numeric(row.names(count_weapon[[i]])), 
+														count_weapon[[i]]/2, 
+														as.numeric(rep(years[i],
+																			 		length(count_weapon[[i]]))))
+}
+names(count_weapon) <- years
+
+count_weapon_var <- as.data.frame(rbind(count_weapon[[1]], 
+												 count_weapon[[2]], 
+												 count_weapon[[3]], 
+											   count_weapon[[4]]))
+colnames(count_weapon_var) <- c("geoid10", "count_weapon", "year")
+
+# total assault crimes ####
+# assault variable is currently incorrect in file ####
+# fixed in import data files but not corrected for the geoid'd files ####
+count_assault <- list()
+for (i in 1:length(years)) {
+	dat <- crimedata[crimedata$fromdate %in% years[i] &
+									 	crimedata$assault == 1, ]
+	count_assault[[i]] <- do.call(rbind, 
+															as.list(by(dat$fromdate, 
+																				 dat$geoid10, 
+																				 length)))
+	count_assault[[i]] <- cbind(as.numeric(row.names(count_assault[[i]])), 
+														count_assault[[i]]/2, 
+														as.numeric(rep(years[i],
+																			 		length(count_assault[[i]]))))
+}
+names(count_assault) <- years
+
+count_assault_var <- as.data.frame(rbind(count_assault[[1]], 
+												 count_assault[[2]], 
+												 count_assault[[3]], 
+											   count_assault[[4]]))
+colnames(count_assault_var) <- c("geoid10", "count_assault", "year")
+
+# merge crime count variables
+newdata <- merge(count_crime_var, count_robbery_var, by = c("geoid10", "year"))
+newdata <- merge(newdata, count_burglary_var, by = c("geoid10", "year"))
+newdata <- merge(newdata, count_domestic_var, by = c("geoid10", "year"))
+newdata <- merge(newdata, count_weapon_var, by = c("geoid10", "year"))
+newdata <- merge(newdata, count_assault_var, by = c("geoid10", "year"))
+
+setwd("C:/Users/Jackie/Dropbox/Civic Tech/Dataswap/dataswap/Tax Assessor's Database and Auxiliary Data/output/data")
+write.csv(newdata, file = "crime_bg_vars.csv", row.names = F, na = '')
+
