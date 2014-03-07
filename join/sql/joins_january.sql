@@ -55,3 +55,20 @@ SELECT f.*, c.geoid10
 FROM original.crime_911 as f
 JOIN original.census_2010 as c
 ON ST_Contains(c.geom, f.geom);
+
+-- JOIN CRIME1 TO BLOCKGROUPS
+DROP TABLE joined.crime;
+CREATE TABLE joined.crime AS 
+SELECT f.*, c.geoid10
+FROM original.crime as f
+JOIN original.census_2010 as c
+ON ST_Contains(c.geom, f.geom);
+
+-- JOIN CRIME2 TO BLOCKGROUPS
+DROP TABLE joined.crime2;
+CREATE TABLE joined.crime2 AS 
+SELECT f.*, c.geoid10
+FROM original.crime2 as f
+JOIN original.census_2010 as c
+ON ST_Contains(c.geom, f.geom);
+
