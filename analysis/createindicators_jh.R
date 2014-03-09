@@ -14,6 +14,7 @@ library("foreign")
 setwd("C:/Users/Jackie/Dropbox/Civic Tech/Dataswap/dataswap/Tax Assessor's Database and Auxiliary Data/output/data")
 fulldata <- read.csv("full_data.csv")
 
+
 # acsdata ####
 setwd("C:/Users/Jackie/Dropbox/Civic Tech/Dataswap/dataswap/Tax Assessor's Database and Auxiliary Data/ACS_2008_2012")
 acsdata <- read.csv("acs0812_bg_suffolk_clean.csv")
@@ -21,7 +22,11 @@ names(acsdata)[1] <- c("geoid10")
 
 # merge acs data
 fulldata <- merge(fulldata, acsdata, by = "geoid10", all.x = TRUE)
-fulldata[, c(6, 8:20)] <- fulldata[, c(6, 8:20)] / fulldata$popu
+
+setwd("C:/Users/Jackie/Dropbox/Civic Tech/Dataswap/dataswap/Tax Assessor's Database and Auxiliary Data/output/data")
+write.csv(fulldata, "full_data_super.csv")
+
+dispc <- prcomp(cbind(na.omit(fulldata[, 11:16])))
 
 # exploratory factor analysis ####
 dat <- fulldata[fulldata$year == 2011, c(6:25, 27:34, 39:40, 42:43, 46:50)]
