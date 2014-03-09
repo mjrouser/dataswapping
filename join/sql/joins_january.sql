@@ -72,3 +72,12 @@ FROM original.crime2 as f
 JOIN original.census_2010 as c
 ON ST_Contains(c.geom, f.geom);
 
+-- JOIN factors TO BLOCKGROUPS
+DROP TABLE joined.factors;
+CREATE TABLE joined.factors AS 
+SELECT f.*, c.geoid10
+FROM 
+  original.factors as f,
+  original.census_2010 as c
+WHERE f.geoid = c.geoid10;
+
