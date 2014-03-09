@@ -34,5 +34,6 @@ factor  alarm_count total_loss, pcf
 rotate 
 predict fire_factor
 
+save "C:\Users\Jackie\Documents\GitHub\dataswap_tax\analysis\full_data_factors.dta"
 
 
