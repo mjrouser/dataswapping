@@ -14,8 +14,8 @@ datcut$Domestic <- as.numeric(datcut$DOMESTIC == "Yes")
 datcut$Weapon <- as.numeric(datcut$WEAPON_TYPE %in% c("Firearm", "Knife", "Other"))
 Assault <- vector(length = nrow(datcut))
 for (i in 1:nrow(datcut)) {
-	Assault[i] <- as.numeric(grepl(datcut$COMPUTEDCRIMECODEDESC[i], "ASSAULT") | 
-														 	grepl(datcut$COMPUTEDCRIMECODEDESC[i], "A&B"))
+	Assault[i] <- as.numeric(grepl("ASSAULT", datcut$COMPUTEDCRIMECODEDESC[i]) | 
+														 	grepl("A&B", datcut$COMPUTEDCRIMECODEDESC[i]))
 }
 datcut$Assault <- Assault
 

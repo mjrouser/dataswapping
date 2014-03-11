@@ -10,3 +10,5 @@
 \COPY joined.permits TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/permits.csv' DELIMITER ',' CSV HEADER;
 \COPY joined.tax TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/tax.csv' DELIMITER ',' CSV HEADER;
 \COPY joined.crime_911 TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/crime_911.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.crime TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/crime_1.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.crime2 TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/crime_2.csv' DELIMITER ',' CSV HEADER;
