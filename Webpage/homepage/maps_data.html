@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="social-buttons-3.css">
 
+
 <style type='text/css'>
 body {
 background-color: #FFFFFF;
@@ -52,9 +53,9 @@ background-color: #FFFFFF;
   <!--Collect the nav links and content for toggling-->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
      <ul class="nav navbar-nav">
-      <li><a href="index.html">Home</a></li>
-      <li class="active"><a href="maps_data.html">Maps/Data</a></li>
-      <li><a href="stories.html">Tell Your Story</a></li>
+      <li id="hli" ><a href="#" id="hbtn">Home</a></li>
+      <li id="mli"><a href="#" id="mbtn">Maps/Data</a></li>
+      <li id="sli"><a href="#" id="sbtn">Tell Your Story</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
       <li><a data-toggle="modal" href="#myModal">About</a></li>   
@@ -74,12 +75,23 @@ background-color: #FFFFFF;
   </nav>
 </div><!-- /.container-fluid -->
 
+<div id='home' class="container-fluid">
+    <div class='row-fluid' style="text-align: center;">
+      <div class="">
+        <h2></h2>
+
+
+        <img src="" alt="viz placeholder" style= "height: 400px; width: 600px;">
+
+       
+      </div>  
+    </div>
+  </div>
 
 
 
-
-<div id='content' class='container-fluid'>
-      <div class='col-md-9'> <!-- viz cols -->
+<div id='maps_data' class='container-fluid hide'>
+      <div id="vizcols" class=""> <!-- viz columns -->
         <h2></h2>
 
         <ul class="nav nav-tabs nav-justified">
@@ -97,15 +109,15 @@ background-color: #FFFFFF;
         <p style="padding-top: 20px;">Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
 
 
-      </div> <!-- /viz cols -->
-      <div class='col-md-3'> <!-- story cols -->
+      </div> <!-- /viz columns -->
+      <div id="scols" class=""> <!-- story columns -->
         <h3>Your Stories</h3>
            <ul class="nav nav-tabs nav-stacked">
            <li><a href='#'>Story 1</a></li>
            <li><a href='#'>Story 2</a></li>
            <li><a href='#'>Story 3</a></li>
            </ul>
-      </div>  <!-- /story cols -->
+      </div>  <!-- /story columns -->
 </div>
   
 
@@ -141,8 +153,10 @@ background-color: #FFFFFF;
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<!--Twitter share button script -->
+<!--Twitter script for share button and feeds -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<script type="text/javascript" src="custom.js"></script>
 
 
 </body>
