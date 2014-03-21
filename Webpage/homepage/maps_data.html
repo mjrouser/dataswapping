@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>TAXonomy</title>
+<title>Boston Barometer</title>
 
 
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
@@ -34,7 +34,7 @@ background-color: #FFFFFF;
 
 <div class="page-header">
   
-  <h2 style="text-align: center;">TAXonomy</h2>
+  <h2 style="text-align: center;">Boston Barometer</h2>
 </div>
 
 <div class="container-fluid">
@@ -54,9 +54,9 @@ background-color: #FFFFFF;
   <!--Collect the nav links and content for toggling-->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
      <ul class="nav navbar-nav">
-      <li id="hli" ><a href="#" id="hbtn">Home</a></li>
-      <li id="mli"><a href="#" id="mbtn">Maps/Data</a></li>
-      <li id="sli"><a href="#" id="sbtn">Tell Your Story</a></li>
+      <li id="hli"><a href="index.html" id="hbtn">Home</a></li>
+      <li id="mli" class="active"><a href="maps_data.html" id="mbtn">Maps/Data</a></li>
+      <li id="sli"><a href="stories.html" id="sbtn">Tell Your Story</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
       <li><a data-toggle="modal" href="#myModal">About</a></li>   
@@ -76,6 +76,8 @@ background-color: #FFFFFF;
   </nav>
 </div><!-- /.container-fluid -->
 
+
+<!--
 <div id='home' class="container-fluid">
     <div class='row-fluid' style="text-align: center;">
       <div class="">
@@ -88,11 +90,11 @@ background-color: #FFFFFF;
       </div>  
     </div>
   </div>
+-->
 
 
-
-<div id='maps_data' class='container-fluid hide'>
-      <div id="vizcols" class=""> <!-- viz columns -->
+<div id='maps_data' class='container-fluid'>
+      <div id="vizcols" class="col-md-9"> <!-- viz columns -->
         <h2></h2>
 
         <ul class="nav nav-tabs nav-justified">
@@ -111,14 +113,22 @@ background-color: #FFFFFF;
 
 
       </div> <!-- /viz columns -->
-      <div id="scols" class=""> <!-- story columns -->
+      <div id="scols" class="col-md-3"> <!-- story columns -->
         <h3>Your Stories</h3>
            <ul class="nav nav-tabs nav-stacked">
            <li><a href='#'>Story 1</a></li>
            <li><a href='#'>Story 2</a></li>
            <li><a href='#'>Story 3</a></li>
            </ul>
-           <a class="twitter-timeline" href="https://api.twitter.com/1.1/search/tweets.json?q=affordability%20housing%20boston" data-widget-id="443792128678694912">Tweets about "affordability housing boston"</a>
+           <a class="twitter-timeline" href="https://api.twitter.com/1.1/search/tweets.json?q=affordability%20housing%20boston&src=typd" data-widget-id="443792128678694912">Tweets about "affordability housing boston"</a>
+
+           <a class="twitter-timeline" href="https://api.twitter.com/1.1/search/tweets.json?q=home+values+boston" data-widget-id="445729515604414464">Tweets about "home values boston"</a>
+
+           <!-- SnapWidget -->
+          <iframe src="http://snapwidget.com/mp/?h=Ym9zdG9udXNhfGlufDMwMHwzfDN8fG5vfDV8bm9uZXxvblN0YXJ0fHllcw==&v=17314" title="Instagram Widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:300px; height:300px"></iframe>
+
+
+
 
 
 
@@ -161,8 +171,9 @@ background-color: #FFFFFF;
 <!--Twitter script for share button and feeds -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
+<!-- JS for menue selectors
 <script type="text/javascript" src="custom.js"></script>
-
+-->
 
 </body>
 </html>
