@@ -80,10 +80,11 @@ background-color: #FFFFFF;
 
 
 <div id='content' class='container-fluid'>
+    <div class="row">
       <div class='col-md-3'> <!-- viz cols -->
         <h2></h2>
 
-        <ul class="nav nav-tabs nav-justified">
+        <ul class="nav nav-tabs nav-stacked">
           <li><a href="#">Map 1</a></li>
           <li><a href="#">Map 2</a></li>
           <li><a href="#">Map 3</a></li>
@@ -97,22 +98,33 @@ background-color: #FFFFFF;
 
         <p style="padding-top: 20px;">Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
 
-
       </div> <!-- /viz cols -->
+
+    
       <div class='col-md-9'> <!-- story cols -->
         <h3>Your Stories</h3>
-           <ul class="nav nav-tabs nav-stacked">
+           <ul class="nav nav-tabs nav-justified">
            <li><a href='#'>Story 1</a></li>
            <li><a href='#'>Story 2</a></li>
            <li><a href='#'>Story 3</a></li>
            </ul>
+          <div class='row'>
+           <div class='col-md-4'>
            <a class="twitter-timeline" href="https://api.twitter.com/1.1/search/tweets.json?q=affordability%20housing%20boston&src=typd" data-widget-id="443792128678694912">Tweets about "affordability housing boston"</a>
-
+           </div>
+           
+           <div class='col-md-4'>
            <a class="twitter-timeline" href="https://api.twitter.com/1.1/search/tweets.json?q=home+values+boston" data-widget-id="445729515604414464">Tweets about "home values boston"</a>
-
+           </div>
+           
+           <div class='col-md-3'>
            <!-- SnapWidget -->
           <iframe src="http://snapwidget.com/mp/?h=Ym9zdG9udXNhfGlufDMwMHwzfDN8fG5vfDV8bm9uZXxvblN0YXJ0fHllcw==&v=17314" title="Instagram Widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:300px; height:300px"></iframe>
+          </div>
+         </div> 
       </div>  <!-- /story cols -->
+     
+   </div>  
 </div>
   
 
