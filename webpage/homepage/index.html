@@ -9,7 +9,7 @@
 
 
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" type="text/css">
 
 <!--
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css">
@@ -60,7 +60,7 @@ background-color: #FFFFFF;
      <ul class="nav navbar-nav">
       <li class="active"><a href="index.html">Home</a></li>
       <li><a href="maps_data.html">Maps/Data</a></li>
-      <li><a href="stories.html">Tell Your Story</a></li>
+      <li><a href="stories.html">Social Streams</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
       <li><a data-toggle="modal" href="#myModal">About</a></li>   
@@ -70,7 +70,7 @@ background-color: #FFFFFF;
         <ul class="dropdown-menu">
           <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://dataswap2013.com/" data-text="See what data says about your neighborhood" data-lang="en">Tweet</a></li>
           <li><div class="fb-share-button" data-href="http://dataswap2013.com" data-type="button_count"></div></li>
-          <li><a href="#">Something Else</a></li>
+          
         </ul>
       </li>
      </ul>
@@ -85,9 +85,11 @@ background-color: #FFFFFF;
       <div class="">
         <h2></h2>
 
-
-        <img src="http://placehold.it/600x400" alt="viz placeholder">
-
+        <!--
+        <img src="http://cdb.io/1hzRcdF" alt="viz placeholder">
+        -->
+        <iframe width='100%' height='520' frameborder='0' src='http://tax.cartodb.com/viz/5b99f368-b37a-11e3-9b68-0e230854a1cb/embed_map?title=true&description=true&search=true&shareable=true&cartodb_logo=true&layer_selector=true&legends=true&scrollwheel=true&fullscreen=false&sublayer_options=1%7C1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(av_2000%20%3E%3D%2037500%20AND%20av_2000%20%3C%3D%201527950)&sw_lat=42.30925570008242&sw_lon=-71.16815030749513&ne_lat=42.37130238016908&ne_lon=-70.94893872912598' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+        
        
       </div>  
     </div>
