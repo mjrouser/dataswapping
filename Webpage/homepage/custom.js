@@ -1,57 +1,68 @@
 
-    var hbtn = document.querySelector("#hbtn");
-    var mbtn = document.querySelector("#mbtn");
-    var sbtn = document.querySelector("#sbtn");
+    var ubtn = document.querySelector("#ubtn");
+    var busbtn = document.querySelector("#busbtn");
+    var combtn = document.querySelector("#combtn");
+    var fbtn = document.querySelector("#fbtn");
+    var cbtn = document.querySelector("#cbtn");
     
-    var homeDiv = document.querySelector("#home");
-    var mapsDiv = document.querySelector("#maps_data")
-    var vizCols = document.querySelector("#vizcols")
-    var sCols = document.querySelector("#scols")
-    var hli = document.querySelector("#hli")
-    var mli = document.querySelector("#mli")
-    var sli = document.querySelector("#sli")
+    var upkeep = document.querySelector("#upkeep");
+    var business = document.querySelector("#business")
+    var complaint = document.querySelector("#complaint")
+    var fire = document.querySelector("#fire")
+    var crime = document.querySelector("#crime")
+   
 
     
-    hbtn.addEventListener("click", toggleClassValues, false)
-    mbtn.addEventListener("click", toggleClassValues, false)
-    sbtn.addEventListener("click", toggleClassValues, false)
+    ubtn.addEventListener("click", toggleClassValues, false)
+    busbtn.addEventListener("click", toggleClassValues, false)
+    combtn.addEventListener("click", toggleClassValues, false)
+    fbtn.addEventListener("click", toggleClassValues, false)
+    cbtn.addEventListener("click", toggleClassValues, false)
     
     
     function toggleClassValues(e) {
         var elementID = e.target.id;
         
-        if (elementID == "hbtn") {
-            addClass(mapsDiv, "hide");
-            removeClass(homeDiv, "hide");
-            addClass(hli, "active");
-            removeClass(mli, "active");
-            removeClass(sli, "active")
+        if (elementID == "ubtn") {
+            addClass(business, "hide");
+            removeClass(upkeep, "hide");
+            addClass(complaint, "hide");
+            addClass(fire, "hide");
+            addClass(crime, "hide")
 
 
             
-        } else if (elementID == "mbtn") {
-            addClass(homeDiv, "hide");
-            removeClass(mapsDiv, "hide");
-            addClass(vizCols, "col-md-9");
-            removeClass(sCols, "col-md-9");
-            addClass(sCols, "col-md-3");
-            removeClass(vizCols, "col-md-3");
-            addClass(mli, "active");
-            removeClass(hli, "active")
-            removeClass(sli, "active")
+        } else if (elementID == "busbtn") {
+            addClass(upkeep, "hide");
+            removeClass(business, "hide");
+            addClass(complaint, "hide");
+            addClass(fire, "hide");
+            addClass(crime, "hide");
+            
+
+        } else if  (elementID == "combtn") {
+            addClass(upkeep, "hide");
+            addClass(business, "hide");
+            removeClass(complaint, "hide");
+            addClass(fire, "hide");
+            addClass(crime, "hide"); 
+
+        } else if  (elementID == "fbtn") {
+            addClass(upkeep, "hide");
+            addClass(business, "hide");
+            addClass(complaint, "hide");
+            removeClass(fire, "hide");
+            addClass(crime, "hide");        
             
 
             
         } else {
-            addClass(homeDiv, "hide");
-            removeClass(mapsDiv, "hide");
-            addClass(vizCols, "col-md-3");
-            removeClass(vizCols, "col-md-9");
-            addClass(sCols, "col-md-9");
-            removeClass(sCols, "col-md-3");
-            addClass(sli, "active")
-            removeClass(hli, "active")
-            removeClass(mli, "active")
+            addClass(upkeep, "hide");
+            addClass(business, "hide");
+            addClass(complaint, "hide");
+            addClass(fire, "hide");
+            removeClass(crime, "hide");
+           
         }
     }
     
