@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Boston Barometer</title>
+
+
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="custom.css" type="text/css">
+
+<!--
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="social-buttons-3.css">
+-->
+
+
+
+
+</head>
+<body>
+
+
+
+
+<div class="page-header">
+  
+  
+  
+  <h2 style="text-align: center;"><img src="barometer_mini.png">  Boston Barometer</h2>
+</div>
+
+<div class="container-fluid">
+  <nav class="navbar navbar-default" role="navigation">
+  
+    <!--Brand and Toggle get grouped for better mobile display-->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tax-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand logo-nav" href="index.html"><span class="glyphicon glyphicon-dashboard"></span></a>
+    </div>  
+  
+  <!--Collect the nav links and content for toggling-->
+    <div class="collapse navbar-collapse" id="tax-navbar-collapse">
+     <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="maps_data.html">Maps/Data</a></li>
+      <li><a href="stories.html">Social Streams</a></li>
+     </ul>
+     <ul class="nav navbar-nav navbar-right">
+      <li><a data-toggle="modal" href="#myModal">About</a></li>   
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span><b class="caret"></b></a>
+
+        <ul class="dropdown-menu">
+          <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://dataswap2013.com/" data-text="See what data says about your neighborhood" data-lang="en">Tweet</a></li>
+          <li><div class="fb-share-button" data-href="http://dataswap2013.com" data-type="button_count"></div></li>
+          
+        </ul>
+      </li>
+     </ul>
+    </div><!--/.navbar-collapse -->
+  </nav>
+</div><!-- /.container-fluid -->
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="15000" data-pause="hover">
+  <!-- Indicators -->
+  <!--
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
+  -->
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="container">
+          <iframe width='100%' height='520' frameborder='0' style='padding-left:40px; padding-right:40px;' src='http://tax.cartodb.com/viz/fefb2918-ba79-11e3-b5a1-0e230854a1cb/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=true&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1%7C1%7C1%7C1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(av_2000%20%3E%3D%2037500%20AND%20av_2000%20%3C%3D%201527950)&sw_lat=42.295532336973594&sw_lon=-71.136474609375&ne_lat=42.35759255044845&ne_lon=-70.91880798339844' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="item">
+     <div class="container"> 
+      <iframe width='100%' height='520' frameborder='0' style='padding-left:40px; padding-right:40px;' src='http://tax.cartodb.com/viz/edcf6e46-bb3d-11e3-acb7-0edbca4b5057/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=true&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1%7C1%7C1%7C1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(av_2004%20%3E%3D%20125600%20AND%20av_2004%20%3C%3D%204877300)&sw_lat=42.23201278799505&sw_lon=-71.28084182739258&ne_lat=42.35619718606785&ne_lon=-70.85134506225586' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="item">
+     <div class="container">
+      <iframe width='100%' height='520' frameborder='0' style='padding-left:40px; padding-right:40px;' src='http://tax.cartodb.com/viz/f8676dee-bb3e-11e3-9b46-0e10bcd91c2b/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=true&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1%7C1%7C1%7C1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(av_2008%20%3E%3D%20139005%20AND%20av_2008%20%3C%3D%205265750)&sw_lat=42.23201278799505&sw_lon=-71.28084182739258&ne_lat=42.35619718606785&ne_lon=-70.85134506225586' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+    </div>
+
+    </div>
+    <div class="item">
+     <div class="container">
+      <iframe width='100%' height='520' frameborder='0' style='padding-left:40px; padding-right:40px;' src='http://tax.cartodb.com/viz/cc985b32-bb3f-11e3-83b2-0e73339ffa50/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=true&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1%7C1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(av_2012%20%3E%3D%20144500%20AND%20av_2012%20%3C%3D%206525900)&sw_lat=42.27330777438251&sw_lon=-71.27243041992188&ne_lat=42.397410795061745&ne_lon=-70.83709716796875' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+    </div>
+
+    </div>
+
+
+    
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" style="color: black;"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" style="color: black;"></span>
+  </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  <div class="container-fluid">
+    <div id='content' class='row-fluid' style="text-align: center;">
+      <div class="">
+        <h2></h2>
+
+        <iframe width='100%' height='520' frameborder='0' style='padding:10px;' src='http://tax.cartodb.com/viz/fefb2918-ba79-11e3-b5a1-0e230854a1cb/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=true&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1%7C1%7C1%7C1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(av_2000%20%3E%3D%2037500%20AND%20av_2000%20%3C%3D%201527950)&sw_lat=42.295532336973594&sw_lon=-71.136474609375&ne_lat=42.35759255044845&ne_lon=-70.91880798339844' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+        
+       
+      </div>  
+    </div>
+  </div>
+-->
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">What is Boston Barometer?</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+The Boston Barometer is a project that utilizes the City of Boston’s Tax Assessor’s Database, additional datasets on neighborhood indicators, and neighborhood narratives as way to understand Boston’s shifting physical and economic landscape. The project is a product of the 2013 Boston DataSwap, which gathered an interdisciplinary group of individuals from research, government, and civic organizations to use particular datasets to understand civic issues in Boston. With visualizations, data analysis, and civic input, the Boston Barometer aims to shed light on neighborhood inequality and generate further discussions on housing affordability in Boston. The project reports data on assessed housing values with neighborhood barometers on crime, businesses, service requests, inspection violations, and fires and highlights discussions and images in social media that are relevant to housing affordability in Boston. We encourage Boston residents, businesses, and local leaders to contribute their own stories of the physical and economic landscape of their neighborhoods. </p>
+      </div>
+      <div class="modal-footer">
+      </div><!--/.modal footer-->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- JQuery and JS for bootstrap -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<!-- Facebook share button script-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=262994210406910";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<!--Twitter share button script -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+</body>
+</html>
