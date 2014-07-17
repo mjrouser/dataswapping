@@ -9,17 +9,10 @@
 
 
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css">
-
-
-
-<style type='text/css'>
-body {
-background-color: #FFFFFF;
-
-}
-</style>
-
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" type="text/css">
+<!--
+<link rel="stylesheet" href="custom.css" type="text/css">
+-->
 
 
 </head>
@@ -28,15 +21,12 @@ background-color: #FFFFFF;
 
 
 
-
-
-<div class="page-header">
-  
-  <h2 style="text-align: center;"><img src="barometer_mini.png">  Boston Barometer</h2>
+<div class="page-header" style="margin: 0">
+    <h2 style="text-align: center;"><img src="img/barometer_mini.png">  Boston Barometer</h2>
 </div>
 
 <div class="container-fluid">
-  <nav class="navbar navbar-default" role="navigation">
+  <nav class="navbar navbar-default" role="navigation" style="margin: 0">
   
     <!--Brand and Toggle get grouped for better mobile display-->
     <div class="navbar-header">
@@ -52,9 +42,9 @@ background-color: #FFFFFF;
   <!--Collect the nav links and content for toggling-->
     <div class="collapse navbar-collapse" id="tax-navbar-collapse">
      <ul class="nav navbar-nav">
-      <li id="hli"><a href="index.html" id="hbtn">Home</a></li>
-      <li id="mli" class="active"><a href="maps_data.html" id="mbtn">Maps/Data</a></li>
-      <li id="sli"><a href="stories.html" id="sbtn">Social Streams</a></li>
+      <li class="active"><a href="#home" id="hmbtn">Home</a></li>
+      <li><a href="#maps_data" id="mapbtn">Maps/Data</a></li>
+      <li><a href="#stories" id="storybtn">Social Streams</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
       <li><a data-toggle="modal" href="#myModal">About</a></li>   
@@ -72,44 +62,47 @@ background-color: #FFFFFF;
   </nav>
 </div><!-- /.container-fluid -->
 
+<div class"container-fluid">
+ <div class="container-fluid" id="home">
+  <iframe width='100%' height='520' frameborder='0' src='//tax.cartodb.com/viz/9881e690-f69c-11e3-acef-0edbca4b5057/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1%7C1%7C1%7C1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(av_2000%20%3E%3D%2037500%20AND%20av_2000%20%3C%3D%201527950)&sw_lat=42.32910829547648&sw_lon=-71.13269805908203&ne_lat=42.38302080829929&ne_lon=-70.9907341003418' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+ </div>
 
 
+ <div class="container-fluid hide" id="maps_data">
 
-
-<div id='maps_data' class='container-fluid'>
-    <div id="vizcols" class="col-md-9"> <!-- viz columns -->
+      <div id="vizcols" class="col-md-9"> <!-- viz columns -->
         <h2></h2>
 
-        <ul class="nav nav-tabs nav-justified" role="tablist">
-           <li><a href="#upkeep" role="tab" data-toggle="tab" id="ubtn">Upkeep</a></li>
-           <li><a href="#business" role="tab" data-toggle="tab" id="busbtn">Business</a></li>
-           <li><a href="#complaint" role="tab" data-toggle="tab" id="combtn">Complaint</a></li>
-           <li><a href='#fire' role="tab" data-toggle="tab" id="fbtn">Fire</a></li>
-           <li><a href='#crime' role="tab" data-toggle="tab" id="cbtn">Crime</a></li>
+        <ul class="nav nav-tabs nav-justified">
+           <li><a href="#" id="ubtn">Upkeep</a></li>
+           <li><a href="#" id="busbtn">Business</a></li>
+           <li><a href="#" id="combtn">Complaint</a></li>
+           <li><a href='#' id="fbtn">Fire</a></li>
+           <li><a href='#' id="cbtn">Crime</a></li>
         </ul>
         <br>
 
-      <div class="tab-content"><!-- Tab Panes -->
-       <div class="container-fluid tab-pane active" id="upkeep">
+       <div class="container-fluid" id="upkeep">
         <iframe width='100%' height='520' frameborder='0' src='http://tax.cartodb.com/viz/8bf1691c-bb34-11e3-83b2-0e73339ffa50/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(av_2000%20%3E%3D%2037500%20AND%20av_2000%20%3C%3D%201527950)&sw_lat=42.31667014253427&sw_lon=-71.11716270446777&ne_lat=42.37033967218861&ne_lon=-70.97588539123535' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
        </div>
-       <div class="container-fluid tab-pane" id="business">
+       <div class="container-fluid hide" id="business">
         <iframe width='100%' height='520' frameborder='0' src='http://tax.cartodb.com/viz/f266a74e-bb33-11e3-8469-0e73339ffa50/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(av_2000%20%3E%3D%2037500%20AND%20av_2000%20%3C%3D%201527950)&sw_lat=42.31997030030568&sw_lon=-71.13055229187012&ne_lat=42.37363701392092&ne_lon=-70.9892749786377' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
        </div>
-       <div class="container-fluid tab-pane" id="complaint">
+       <div class="container-fluid hide" id="complaint">
         <iframe width='100%' height='520' frameborder='0' src='http://tax.cartodb.com/viz/2fe2c6e8-bb34-11e3-acb7-0edbca4b5057/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(av_2000%20%3E%3D%2037500%20AND%20av_2000%20%3C%3D%201527950)&sw_lat=42.31965298495986&sw_lon=-71.13038063049316&ne_lat=42.37331996934944&ne_lon=-70.98910331726074' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
        </div>
-       <div class="container-fluid tab-pane" id="fire">
+       <div class="container-fluid hide" id="fire">
         <iframe width='100%' height='520' frameborder='0' src='http://tax.cartodb.com/viz/c825b398-bb34-11e3-b09f-0e10bcd91c2b/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(fire_facto%20%3E%3D%20-0.7078276277%20AND%20fire_facto%20%3C%3D%2011)&sw_lat=42.32263568600198&sw_lon=-71.13089561462402&ne_lat=42.37630012510219&ne_lon=-70.9896183013916' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
        </div>
-       <div class="container-fluid tab-pane" id="crime">
+       <div class="container-fluid hide" id="crime">
         <iframe width='100%' height='520' frameborder='0' src='http://tax.cartodb.com/viz/39007140-bb33-11e3-8469-0e73339ffa50/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1&sql=SELECT%20*%20FROM%20factors%20WHERE%20(crime_fact%20%3E%3D%20-1.0032978058%20AND%20crime_fact%20%3C%3D%205.0836572647)&sw_lat=42.328283392077324&sw_lon=-71.12643241882324&ne_lat=42.38194301130701&ne_lon=-70.98515510559082' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-       </div> <!-- End Tab Panes -->
-      </div>
+       </div>
+
+
         
 
 
-    </div> <!-- /viz columns -->
+      </div> <!-- /viz columns -->
       <div id="scols" class="col-md-3"> <!-- story columns -->
         
         <h3>Tweets & More</h3>
@@ -125,15 +118,22 @@ background-color: #FFFFFF;
 
            <!-- SnapWidget -->
           <iframe src="http://snapwidget.com/mp/?h=Ym9zdG9udXNhfGlufDMwMHwzfDN8fG5vfDV8bm9uZXxvblN0YXJ0fHllcw==&v=17314" title="Instagram Widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:300px; height:300px"></iframe>
+
+
+
+
+
+
       </div>  <!-- /story columns -->
 
-
-
-
-
-      
+  </div> <!-- /maps_data div-->
 </div>
-  
+
+
+
+
+
+
 
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
@@ -146,16 +146,15 @@ background-color: #FFFFFF;
         <p>
 The Boston Barometer is a project that utilizes the City of Boston’s Tax Assessor’s Database, additional datasets on neighborhood indicators, and neighborhood narratives as way to understand Boston’s shifting physical and economic landscape. The project is a product of the 2013 Boston DataSwap, which gathered an interdisciplinary group of individuals from research, government, and civic organizations to use particular datasets to understand civic issues in Boston. With visualizations, data analysis, and civic input, the Boston Barometer aims to shed light on neighborhood inequality and generate further discussions on housing affordability in Boston. The project reports data on assessed housing values with neighborhood barometers on crime, businesses, service requests, inspection violations, and fires and highlights discussions and images in social media that are relevant to housing affordability in Boston. We encourage Boston residents, businesses, and local leaders to contribute their own stories of the physical and economic landscape of their neighborhoods. </p>
       </div>
-       <div class="modal-footer">
-       </div><!--/.modal footer-->
+      <div class="modal-footer">
+      </div><!--/.modal footer-->
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->  
+</div><!-- /.modal -->
 
-
-<!-- External links for the Jquery and Js needed for Bootstrap -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!-- JQuery and JS for bootstrap -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <!-- CDNs for backbone and underscore -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
@@ -169,8 +168,6 @@ The Boston Barometer is a project that utilizes the City of Boston’s Tax Asses
 
 </script>
 
-  
-
 
 
 <!-- Facebook share button script-->
@@ -179,20 +176,14 @@ The Boston Barometer is a project that utilizes the City of Boston’s Tax Asses
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=262994210406910";
+  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=262994210406910";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<!--Twitter script for share button and feeds -->
+<!--Twitter share button script -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 </script>
-
-
-<!--Custom JS for toggling maps
-<script  src="custom.js"></script>
--->
-
 
 </body>
 </html>
