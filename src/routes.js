@@ -2,6 +2,7 @@
 
 var MapRouter = Backbone.Router.extend ({
       routes: {
+                 ''  : 'showHome',
                  'home' : 'showHome',
                  'maps_data': "showMapsdata",
                  'stories': 'showStories'  
