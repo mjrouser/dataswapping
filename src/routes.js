@@ -26,6 +26,9 @@ var MapRouter = Backbone.Router.extend ({
          $('#maptabs').removeClass('nav-stacked');
          $('#twtabs').addClass('nav-stacked');
          $('#twtabs').removeClass('nav-justified');
+         $('#tw1').removeClass('col-md-4');
+         $('#tw2').removeClass('col-md-4');
+         $('#tw3').removeClass('col-md-3');
 
 
       },
@@ -40,6 +43,9 @@ var MapRouter = Backbone.Router.extend ({
         $('#maptabs').removeClass('nav-justified');
         $('#twtabs').addClass('nav-justified');
         $('#twtabs').removeClass('nav-stacked');
+        $('#tw1').addClass('col-md-4');
+        $('#tw2').addClass('col-md-4');
+        $('#tw3').addClass('col-md-3');
 
 
       }
