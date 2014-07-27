@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet Layers Control Example</title>
+	<meta charset="utf-8" />
+	<!-- hello-->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+
+	<link rel="stylesheet" href="leaflet/leaflet.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="../dist/leaflet.ie.css" /><![endif]-->
+
+	<style>
+		#map {
+			width: 800px;
+			height: 600px;
+		}
+
+		.info {
+			padding: 6px 8px;
+			font: 14px/16px Arial, Helvetica, sans-serif;
+			background: white;
+			background: rgba(255,255,255,0.8);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+		}
+		.info h4 {
+			margin: 0 0 5px;
+			color: #777;
+		}
+
+		.legend {
+			text-align: left;
+			line-height: 18px;
+			color: #555;
+		}
+		.legend i {
+			width: 18px;
+			height: 18px;
+			float: left;
+			margin-right: 8px;
+			opacity: 0.7;
+		}
+		.layer-options{
+			position: absolute;
+			top: 500px;
+			left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+	
+	<div class="layer-options">
+		<form >
+	        <input class="map-layer" type="radio" name="time" value="pop" checked="true">
+	            <div class="legend-text">pop</div>
+	        <input class="map-layer" type="radio" name="time" value="height">
+	            <div class="legend-text">height</div>
+	        <input class="map-layer" type="radio" name="time" value="tax">
+	            <div class="legend-text">tax</div>
+	    </form>
+	</div>
+
+	<script src="leaflet/leaflet.js"></script>
+
+	<script type="text/javascript" src="boston.js"></script>
+	<script type="text/javascript">
+
+		var map = L.map('map').setView([42.32, -71.07], 12);
+
+		var cloudmade = L.tileLayer('http://{s}.tile.cloudmade.com/{key}/{styleId}/256/{z}/{x}/{y}.png', {
+			attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
+			key: 'BC9A493B41014CAABB98F0471D759707',
+			styleId: 22677
+		}).addTo(map);
+
+		// control that shows state info on hover
+		var info = L.control();
+
+		info.onAdd = function (map) {
+			this._div = L.DomUtil.create('div', 'info');
+			this.update();
+			return this._div;
+		};
+
+		info.update = function (props) {
+			this._div.innerHTML = '<h4>Boston Neighborhoods</h4>' +  (props ?
+				'<b>' + props.nbhd + '</b><br />' 
+				+ props.pop_den_avg.toFixed(0) + ' people / mi<sup>2</sup><br>'
+				+ props.fy2013.toFixed(0) + ' $ tax<br>'
+				+ props.top_gl_avg.toFixed(1) + ' height ft'
+				: 'Hover over a neighborhood');
+		};
+
+		info.addTo(map);
+
+
+		// get color depending on population density value
+		function getColorPop(d) {
+			return d > 40000  ? '#E31A1C' :
+			       d > 30000  ? '#FC4E2A' :
+			       d > 20000   ? '#FD8D3C' :
+			       d > 10000   ? '#FEB24C' :
+			       d > 0     ? '#FED976' :
+			                    '#FFEDA0';
+		}
+
+		function getColorHeight(d) {
+			return d > 40  ? '#E31A1C' :
+			       d > 30  ? '#FC4E2A' :
+			       d > 20   ? '#FD8D3C' :
+			       d > 10   ? '#FEB24C' :
+			       d > 0     ? '#FED976' :
+			                    '#FFEDA0';
+		}
+
+		function getColorTax(d) {
+			return d > 8000000 ? '#E31A1C' :
+			       d > 6000000 ? '#FC4E2A' :
+			       d > 4000000 ? '#FD8D3C' :
+			       d > 2000000 ? '#FEB24C' :
+			       d > 0       ? '#FED976' :
+			                    '#FFEDA0';
+		}
+
+		function stylePop(feature) {
+			return {
+				weight: 2,
+				opacity: 1,
+				color: 'white',
+				dashArray: '3',
+				fillOpacity: 0.7,
+				fillColor: getColorPop(feature.properties.pop_den_avg)
+			};
+		}
+
+		function styleHeight(feature) {
+			return {
+				weight: 2,
+				opacity: 1,
+				color: 'white',
+				dashArray: '3',
+				fillOpacity: 0.7,
+				fillColor: getColorHeight(feature.properties.top_gl_avg)
+			};
+		}
+
+		function styleTax(feature) {
+			return {
+				weight: 2,
+				opacity: 1,
+				color: 'white',
+				dashArray: '3',
+				fillOpacity: 0.7,
+				fillColor: getColorTax(feature.properties.fy2013)
+			};
+		}
+
+		function highlightFeature(e) {
+			// make a popup on hover 
+			//popup(e);
+
+			var layer = e.target;
+
+			layer.setStyle({
+				weight: 5,
+				color: '#666',
+				dashArray: '',
+				fillOpacity: 0.7
+			});
+
+			if (!L.Browser.ie && !L.Browser.opera) {
+				layer.bringToFront();
+			}
+
+			info.update(layer.feature.properties);			
+		}
+
+		// function popup(e) {
+		//   //open popup;
+		//   var popup = L.popup()
+		//     .setLatLng(e.latlng) //(assuming e.latlng returns the coordinates of the event)
+		//     .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+		//     .openOn(map);
+		// };
+
+		var geojson;
+
+		function resetHighlight(e) {
+			geojson.resetStyle(e.target);
+			info.update();
+		}
+
+		function zoomToFeature(e) {
+			map.fitBounds(e.target.getBounds());
+		}
+
+		function onEachFeature(feature, layer) {
+			layer.on({
+				mouseover: highlightFeature,
+				mouseout: resetHighlight,
+				click: zoomToFeature
+			});
+		}
+
+		function makePop(){
+			if(geojson){
+				geojson.clearLayers();
+			}
+			geojson = L.geoJson(statesData, {
+				style: stylePop,
+				onEachFeature: onEachFeature
+			}).addTo(map);
+		}
+
+		function makeHeight(){
+			geojson.clearLayers();
+			geojson = L.geoJson(statesData, {
+				style: styleHeight,
+				onEachFeature: onEachFeature
+			}).addTo(map);
+		}
+
+		function makeTax(){
+			geojson.clearLayers();
+			geojson = L.geoJson(statesData, {
+				style: styleTax,
+				onEachFeature: onEachFeature
+			}).addTo(map);
+		}
+
+		map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
+
+
+		var legend = L.control({position: 'bottomright'});
+
+		legend.onAdd = function (map) {
+
+			var div = L.DomUtil.create('div', 'info legend'),
+				grades = [0, 10000, 20000, 30000, 40000],
+				labels = [],
+				from, to;
+
+			for (var i = 0; i < grades.length; i++) {
+				from = grades[i];
+				to = grades[i + 1];
+
+				labels.push(
+					'<i style="background:' + getColorPop(from + 1) + '"></i> ' +
+					from + (to ? '&ndash;' + to : '+'));
+			}
+
+			div.innerHTML = labels.join('<br>');
+			return div;
+		};
+
+		legend.addTo(map);
+
+		// add population layer
+		makePop();
+
+		// choose the layer to display
+	    $(".map-layer") 
+	        .change(function(){ 
+	            if( $(this).is(":checked") ){ 
+	            	if($(this).val() == 'height'){
+	            		makeHeight();	
+	            	}
+	            	if($(this).val() == 'pop'){
+	            		makePop();	
+	            	}
+	            	if($(this).val() == 'tax'){
+	            		makeTax();	
+	            	}
+	                
+	            }
+	        });   
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+\COPY joined.biz_data_2007 TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/biz_data_2007.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.biz_data_2008 TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/biz_data_2008.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.biz_data_2009 TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/biz_data_2009.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.biz_data_2010 TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/biz_data_2010.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.biz_data_2011 TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/biz_data_2011.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.buildings TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/buildings.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.crime_311 TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/crime_311.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.fires TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/fires.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.inspection_violations TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/inspection_violations.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.permits TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/permits.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.tax TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/tax.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.crime_911 TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/crime_911.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.crime TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/crime_1.csv' DELIMITER ',' CSV HEADER;
+\COPY joined.crime2 TO '/Volumes/SaoirseMor/Dropbox/dataswap/output/data/crime_2.csv' DELIMITER ',' CSV HEADER;

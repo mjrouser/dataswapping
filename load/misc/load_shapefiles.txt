@@ -1,0 +1,34 @@
+
+# load boston data
+
+# districts
+shp2pgsql -s 2805 -i -I -d -D /Users/djq/Dropbox/courbanize_data/boston/buildings/bra_planning_districts_prj.shp neighborhoods | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# districts - part 2 (previous data was not matching with some city maps)
+shp2pgsql -s 2805 -i -I -d -D /Users/djq/Dropbox/courbanize_data/boston/buildings/bra_planning_districts_2000_simplified_prj.shp neighborhoods | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# buildings
+shp2pgsql -s 2805 -i -I -d -W "LATIN1" -D /Users/djq/Dropbox/courbanize_data/boston/buildings/Buildings_prj.shp buildings | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# roads
+shp2pgsql -s 2805 -i -I -d -W "LATIN1" -D /Users/djq/Dropbox/courbanize_data/boston/buildings/Road_Centerlines_prj.shp roads | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# road polygons
+shp2pgsql -s 2805 -i -I -d -W "LATIN1" -D /Users/djq/Dropbox/courbanize_data/boston/buildings/Road_Polygons_prj.shp road_polygons | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# census blockgroups
+shp2pgsql -s 2805 -i -I -d -D /Users/djq/Dropbox/courbanize_data/boston-metro/census/2010_blockgroup_prj.shp census | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+# boston parcels
+shp2pgsql -s 2805 -i -I -d -D /Users/djq/Dropbox/courbanize_data/boston/parcels/parcels_2010.shp parcels | psql -U david -d analysis -h 66.228.36.34 -p 5432 
+
+
+
+
+
+
+
+
+
+
+
